@@ -26,13 +26,13 @@ function App() {
   }
 
   function handleAddTodo(e) {
+    i++;
     const name = todoNameRef.current.value;
     if (name === "") return;
     setTodos((prevTodos) => {
       return [...prevTodos, { id: i, name: name, complete: false }];
     });
     todoNameRef.current.value = null;
-    i++;
   }
 
   return (
