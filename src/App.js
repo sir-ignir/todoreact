@@ -6,9 +6,11 @@ import React, { useState, useRef, useEffect } from "react";
 function App() {
   const [todos, setTodos] = useState([]);
   const todoNameRef = useRef();
-  let i = 1;
+  let i = Date.now().toString();
+  let jour = parseInt(i);
   const LOcal_Storage_key = "todoApp.todos";
   console.log(localStorage);
+  const timestamp = i;
   useEffect(() => {
     const storeTodos = JSON.parse(localStorage.getItem(LOcal_Storage_key));
     if (storeTodos) setTodos(storeTodos);
@@ -26,7 +28,6 @@ function App() {
   }
 
   function handleAddTodo(e) {
-    i++;
     const name = todoNameRef.current.value;
     if (name === "") return;
     setTodos((prevTodos) => {
@@ -43,6 +44,7 @@ function App() {
       <br></br>
       <button>clear clompeted todos</button>
       <div>0 left to do</div>
+      <p>{timestamp}</p>
     </div>
   );
 }
