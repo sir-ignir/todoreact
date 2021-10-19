@@ -8,16 +8,16 @@ function App() {
   const todoNameRef = useRef();
   let i = Date.now().toString();
   let jour = parseInt(i);
-  const LOcal_Storage_key = "todoApp.todos";
+  const LOcal_Storage = "todoApp.todos";
   console.log(localStorage);
-  const timestamp = i;
+  const timestamp = jour;
   useEffect(() => {
-    const storeTodos = JSON.parse(localStorage.getItem(LOcal_Storage_key));
+    const storeTodos = JSON.parse(localStorage.getItem(LOcal_Storage));
     if (storeTodos) setTodos(storeTodos);
   }, []);
 
   useEffect(() => {
-    localStorage.setItem(LOcal_Storage_key, JSON.stringify(todos));
+    localStorage.setItem(LOcal_Storage, JSON.stringify(todos));
   }, [todos]);
 
   function toggleTodo(id) {
@@ -36,14 +36,19 @@ function App() {
     todoNameRef.current.value = null;
   }
 
+  function handleClearTodos() {
+    const newTodos = todos.filter((todo) => !todo.complete);
+    setTodos(newTodos);
+  }
+
   return (
     <div id="main">
       <Todolist todos={todos} toggleTodo={toggleTodo} />
       <input ref={todoNameRef} type="text" />
       <button onClick={handleAddTodo}>add todo</button>
       <br></br>
-      <button>clear clompeted todos</button>
-      <div>0 left to do</div>
+      <button onClick={handleClearTodos}>clear clompeted todos</button>
+      <div>{todos.filter((todo) => !todo.complete).length} left to do</div>
       <p>{timestamp}</p>
     </div>
   );
