@@ -39,11 +39,10 @@
 
 label {
   margin: 5px, 5px, 5px, 5px;
-  
 }
 button {
   background-color: hsl(143, 87%, 48%);
-  color: black; 
+  color: black;
 }
 #main {
   border: black 2px solid;
@@ -51,8 +50,10 @@ button {
   max-height: 30%;
   margin-left: 30%;
   margin-top: 5%;
-  padding-left: 125px;
+  /** padding-left: 125px;
   padding-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 10px;*/
   background-color: rgb(172, 170, 170);
+  align-items: center;
+  flex-direction: column;
 }

@@ -10,7 +10,7 @@ function App() {
   let jour = parseInt(i);
   const LOcal_Storage = "todoApp.todos";
   console.log(localStorage);
-  const timestamp = jour;
+  const timestamp = jour.toDateString();
   useEffect(() => {
     const storeTodos = JSON.parse(localStorage.getItem(LOcal_Storage));
     if (storeTodos) setTodos(storeTodos);
