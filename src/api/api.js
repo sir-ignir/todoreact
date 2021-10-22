@@ -1,9 +1,9 @@
-import react, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 function Api() {
   const url = "https://jsonplaceholder.typicode.com/albums";
-
+  const album = 0;
   const app = () => {
     const [post, setPost] = useState(null);
     useEffect(() => {
@@ -16,7 +16,8 @@ function Api() {
   };
   return (
     <div>
-      <input type="text"></input>
+      <input type="text" value={album}></input>
+      <button onClick="Api">click me</button>
     </div>
   );
 }

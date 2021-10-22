@@ -1,10 +1,10 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Todolist from "./Todolist";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef } from "react";
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  /*const [todos, setTodos] = useState([]);
   const todoNameRef = useRef();
   let i = Date.now().toString();
   let jour = parseInt(i);
@@ -51,7 +51,7 @@ function App() {
       <div>{todos.filter((todo) => !todo.complete).length} left to do</div>
       <p>{timestamp}</p>
     </div>
-  );
+  );*/
 }
 
 export default App;
