@@ -1,23 +1,32 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-
+import PhotoCard from "./PhotoCard";
 function Api() {
-  const url = "https://jsonplaceholder.typicode.com/albums";
-  const album = 0;
-  const app = () => {
-    const [post, setPost] = useState(null);
-    useEffect(() => {
-      const data = axios.get(url); /*= async () => {
-         const res = await (url);
-    const data = await res.json();
-      };*/
-      console.log(data);
-    });
+  const [photos, setPhotos] = useState([]);
+  const fetchData = async () => {
+    try {
+      const url = await axios.get(
+        "https://jsonplaceholder.typicode.com/photos?albumId=1"
+      );
+      //console.log("data =>", url.data);
+      setPhotos(url.data);
+    } catch (error) {
+      console.log("error =>", error);
+    }
   };
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <div>
-      <input type="text" value={album}></input>
-      <button onClick="Api">click me</button>
+      <h1>mon api photo</h1>
+      <div id="photoAlbum">
+        {photos.map((photo) => {
+          return (
+            <PhotoCard thumbnailUrl={photo.thumbnailUrl} title={photo.title} />
+          );
+        })}
+      </div>
     </div>
   );
 }
