@@ -1,7 +1,7 @@
 const photoCard = ({ thumbnailUrl, title }) => {
   return (
     <div className="photoCardContainer">
-      <img src={thumbnailUrl} alt={title}></img>
+      <img src={thumbnailUrl} alt={title} key={thumbnailUrl}></img>
     </div>
   );
 };
