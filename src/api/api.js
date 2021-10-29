@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import PhotoCard from "./PhotoCard";
 import "./api.css";
-import Form from "./form";
+import Form from "./Form";
 function Api() {
+  //setIsLoading(true);
   const [isLoading, setIsLoading] = useState(true);
   const [photos, setPhotos] = useState([]);
-  const [albumId, setAlbumId] = useState(1);
+  const [albumId, setAlbumId] = useState(8);
   const fetchData = async () => {
     try {
       const url = await axios.get(
@@ -14,18 +15,18 @@ function Api() {
       );
       //console.log("data =>", url.data);
       setPhotos(url.data);
-      setIsLoading(false);
+      setTimeout(() => setIsLoading(false), 800);
     } catch (error) {
       console.log("error =>", error);
     }
   };
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [albumId]);
   return (
     <div>
       <h1>mon api photo</h1>
-      <Form albumId={albumId} />
+      <Form albumId={albumId} setAlbumId={setAlbumId} />
       {isLoading ? (
         <p>getting data</p>
       ) : (
