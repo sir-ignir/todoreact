@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Form = (albumId, setAlbumId) => {
+const Form = ({ albumId, setAlbumId }) => {
   const [inputValue, setInputValue] = useState(albumId);
   return (
     <div id="form">

@@ -9,6 +9,7 @@ function Api() {
   const [photos, setPhotos] = useState([]);
   const [albumId, setAlbumId] = useState(8);
   const fetchData = async () => {
+    setIsLoading(true);
     try {
       const url = await axios.get(
         "https://jsonplaceholder.typicode.com/photos?albumId=" + albumId
